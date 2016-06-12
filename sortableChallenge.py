@@ -10,8 +10,8 @@ def main():
         for product in (json.loads(line) for line in fileIn):
             prod_listing = [ listing 
                 for listing in listings if all(
-                    [ product[u'product_name'].replace('_',' ') in listing[u'title'] 
-                    , product[u'manufacturer'] == listing[u'manufacturer']
+                    [ product[u'product_name'].replace('_',' ').upper() in listing[u'title'].upper() 
+                    , product[u'manufacturer'].upper() == listing[u'manufacturer'].upper()
                     ]) ]
             result = json.dumps( { u'product_name' : product[u'product_name'] 
                                  , u'listings'     : prod_listing
