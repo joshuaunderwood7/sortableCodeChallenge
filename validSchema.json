@@ -1,0 +1,72 @@
+
+{
+
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions" : {
+
+    "Product" : {
+      "type"  : "object",
+      "properties" : {
+        "product_name": {
+          "type" : "string",
+          "description" : "A unique id for the product"
+        },
+        "manufacturer": {
+          "type" : "string"
+        },
+        "family": {
+          "type" : "string",
+          "description" : "optional grouping of products"
+        },
+        "model": {
+          "type" : "string"
+        },
+        "announced-date": {
+          "type" : "string",
+          "description" : "ISO-8601 formatted date string, e.g. 2011-04-28T19:00:00.000-05:00"
+        }
+      }
+    },
+
+    "Listing" : {
+      "type"  : "object",
+      "properties" : {
+        "title": {
+          "type" : "string",
+          "description" : "description of product for sale"
+        },
+        "manufacturer": {
+          "type" : "string",
+          "description" : "who manufactures the product for sale"
+        },
+        "currency": {
+          "type" : "string",
+          "description" : "currency code, e.g. USD, CAD, GBP, etc."
+        },
+        "price": {
+          "type" : "string",
+          "description" : "price, e.g. 19.99, 100.00"
+        }
+      }
+    }
+
+  },
+
+  "properties" : {
+    "listing" : { "$ref" : "#/definitions/Listing" },
+    "product" : { "$ref" : "#/definitions/Product" },
+    "result"  : {
+      "type"  : "object",
+      "properties" : {
+        "product_name": {
+          "type" : "string"
+        },
+        "listings": {
+          "type" : "array",
+          "items" : { "$ref" : "#/definitions/Listing" }
+          }
+        }
+      }
+    }
+  }
+}
